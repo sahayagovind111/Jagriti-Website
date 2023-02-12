@@ -1,0 +1,63 @@
+.timer-container{
+    /* text-align: center; */
+    /* height: 50vh; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+.date{
+    margin-left: 20%;
+}
+
+.text{
+    font-weight: 900;
+}
+.jagriti{
+    font-size: larger;
+}
+#days{
+    background-color: #F2E0D2;
+    height: 19%;
+    width: fit-content;
+    margin-bottom: 20%;
+    margin-left: 12%;
+    margin-right: 20px
+}
+#hours{
+    background-color: #F2E0D2;
+    height: 19%;
+    width: fit-content;
+    margin-right: 20px
+}
+#minutes{
+    background-color: #F2E0D2;
+    height: 19%;
+    width: fit-content;
+    margin-right: 20px
+}
+#seconds{
+    background-color: #F2E0D2;
+    height: 19%;
+    width: fit-content;
+}
+#imgs{
+    margin-left: 70%;
+    /* margin-top: -45%; */
+    margin-top: -37%;
+}
+@media screen and (max-width: 650px){
+#imgs{
+    display: none;
+}
+}
+@media screen and (max-width: 875px){
+    #seconds{
+        display: none;
+    }
+    }
+    @media screen and (max-width: 370px){
+        .clock{
+            margin-left: -31px;
+        }
+    }
