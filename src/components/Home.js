@@ -16,11 +16,11 @@ function Home() {
             </p>
             <p className="paras">Lorem ipsum dolor sit amet.</p>
 
-            <div class="box">
-              <button class="btn1 btn2 button">
+            <div className="box">
+              <button className="btn1 btn2 button">
                 <Link to="/events">Explore Events &#x0003E;</Link>
               </button>
-              <button class="btn1 btn3 button">Workshops &#x0003E;</button>
+              <button className="btn1 btn3 button">Workshops &#x0003E;</button>
             </div>
 
             {/* <p>Best websites for developing companies.</p> */}

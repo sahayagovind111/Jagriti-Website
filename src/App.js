@@ -7,8 +7,11 @@ import HomePage from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage";
 import EventsPage from "./pages/EventsPage";
 import TeamPage from "./pages/TeamPage";
+import { useFirebase } from "./context/Firebase";
 
 const App = () => {
+  const firebase = useFirebase();
+ 
   return (
     <div>
       <BrowserRouter>
