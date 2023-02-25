@@ -1,4 +1,5 @@
 import React from 'react'
+import Newsletter from './Newsletter'
 import './Footer.css'
 function Footer() {
   return (
@@ -26,7 +27,7 @@ function Footer() {
     </div>
   </div>
 </div>
-
+<Newsletter/>
 <div className="container">
   <div className="row">
     <div className="col-sm-6" id="number">
