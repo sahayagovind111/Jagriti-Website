@@ -1,6 +1,6 @@
-import { createContext, useContext } from "react";
+import { createContext, useContext, useState } from "react";
 import { initializeApp } from "firebase/app";
-
+import { getFirestore, getDocs, collection } from "firebase/firestore";
 
 // Import Required Firebase Utility
 
@@ -14,10 +14,8 @@ const firebaseConfig = {
 };
 
 const firebaseApp = initializeApp(firebaseConfig);
-
+const db = getFirestore(firebaseApp);
 // Create an instance of the imported firebase utility
-
-
 
 const FirebaseContext = createContext(null);
 
@@ -26,23 +24,32 @@ export const useFirebase = () => {
 };
 
 export const FirebaseProvider = (props) => {
+  const [CollectionData, setCollectionData] = useState([]);
+  // Create the required function for using the internal functions of the utility imported
 
-    // Create the required function for using the internal functions of the utility imported
-    
+  async function fetchEventData(collectionName) {
+    try {
+      const collectionData = await getDocs(collection(db, collectionName));
 
+      collectionData.forEach((doc) =>
+        setCollectionData((prev) => {
+          return [...prev,doc.data()];
+        })
+      );
 
- 
+      console.log(CollectionData);
+      return CollectionData;
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   return (
     <FirebaseContext.Provider
-      value={
-        {
-          // Pass the functions created to be used globally
-
-
-        
-        }
-      }
+      value={{
+        // Pass the functions created to be used globally
+        fetchEventData,
+      }}
     >
       {props.children}
     </FirebaseContext.Provider>
