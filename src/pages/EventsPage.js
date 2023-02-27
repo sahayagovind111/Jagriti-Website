@@ -6,26 +6,26 @@ import EventCard from '../components/EventCard/EventCard';
 
 const EventsPage = () => {
 const firebase = useFirebase();
-const [eventData,setEventData] = useState([]);
+
 
   
-async function Fetchdata(){
-  const collectionData = await firebase.fetchEventData("events").then(result => setEventData((prev)=>[...result]))
-  console.log(collectionData.data());
+ function Fetchdata(){
+  // const collectionData = firebase.fetchEventData("events").then(result => setEventData((prev)=>[...result]))
+  const Data = firebase.fetchCollectionData("events");
+  
 }
 useEffect(()=>{
-  setEventData([])
   Fetchdata()
 },[])
 
 
-  console.log(eventData)
+  
   return (  
     <div>
       
     <Events/>
     {
-      eventData.map((edata)=><EventCard eventName={edata.eventName} overview={edata.overview} contact={edata.contact} status={edata.status}></EventCard>)
+      firebase.EventData.map((edata)=><EventCard eventName={edata.eventName} overview={edata.overview} contact={edata.contact} status={edata.status}></EventCard>)
     }
     </div>
   )

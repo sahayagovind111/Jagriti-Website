@@ -27,21 +27,25 @@ export const useFirebase = () => {
 
 export const FirebaseProvider = (props) => {
 
-  const [CollectionData, setCollectionData] = useState([]);
+  const [EventData, setEventData] = useState([]);
   // Create the required function for using the internal functions of the utility imported
 
-  async function fetchEventData(collectionName) {
+  async function fetchCollectionData(collectionName) {
     try {
       const collectionData = await getDocs(collection(db, collectionName));
-
-      collectionData.forEach((doc) =>
-        setCollectionData((prev) => {
-          return [...prev,doc.data()];
-        })
-      );
-
-      console.log(CollectionData);
-      return CollectionData;
+      
+      if(collectionName === "events"){
+        setEventData([]);
+        collectionData.forEach((doc) =>
+          setEventData((prev) => {
+            return [...prev,doc.data()];
+          })
+        );
+  
+        console.log(EventData);
+      }
+     
+     
     } catch (error) {
       console.log(error);
     }
@@ -63,8 +67,9 @@ export const FirebaseProvider = (props) => {
     <FirebaseContext.Provider
       value={{
         // Pass the functions created to be used globally
-        fetchEventData,
+        fetchCollectionData,
         addDocument,
+        EventData,
       }}
     >
       {props.children}
