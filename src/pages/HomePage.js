@@ -3,6 +3,7 @@ import Home from "../components/Home";
 import Clock from "../components/Clock";
 import Testimonial from "../components/Testimonial";
 import Throwback from "../components/Throwback";
+import Timeline from "../components/Timeline";
 import Faqs from "../components/Faqs";
 
 
@@ -61,6 +62,7 @@ const HomePage = () => {
         timerSeconds={timerSeconds}
       />
       <Testimonial />
+      <Timeline/>
       <Throwback />
       <Faqs />
     </>
