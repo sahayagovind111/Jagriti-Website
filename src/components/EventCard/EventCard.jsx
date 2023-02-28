@@ -7,42 +7,58 @@ const EventCard = (props) => {
  
 
     return (
-    <div>
+    <div className='card-main'>
     <div className='card-img'>
     <img src={props.url} alt='eventimage'></img>
     
     
     </div>
+        
+        <div className='card-content-main'>
+
+       
         <div className='card-title'>
-            <h2>{props.eventName}</h2>
+            <h1>{props.eventName}</h1>
         </div>
 
     <div className='card-overview-contact'>
-        <h2 onClick={()=>setIsOverview(true)}>Overview</h2>
+       <div className='card-overview-contact-title'>
+       <h2 onClick={()=>setIsOverview(true)}>Overview</h2>
         <h2 onClick={()=>setIsOverview(false)}>Contact</h2>
-        {isOverview ? (<div className='card-content'>
-            <p>{props.overview}</p>
-
-        </div>) :
+       </div>
         
-        (<div className='card-content'>
+       <div className='card-content'>
+        {isOverview ? (
+            <div className='card-overview-content'>
+            <p>{props.overview}</p>
+            </div>
+            
+
+        ) :
+        
+        (<div className='card-contact-content'>
             {props.contact.map((element)=>
-                <>
+                
                     <div className='card-contact'>
-                    <h1>{element.contactName}</h1>
-                    <h2>{element.number}</h2>
+                    <p>{element.contactName}</p>
+                    <p>{element.number}</p>
                     </div>
                     
-                </>
+               
             )}
 
         </div>)}
+        </div>
     </div>
 
     <div className='card-registration'>
+        <div className='card-regis-result'>
         {props.status ? (<div>Registrations open</div>):(<div>Registrations closed</div>)}
+        </div>
+      
     </div>
 
+    </div>
     </div>
   )
 }
