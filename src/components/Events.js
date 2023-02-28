@@ -33,7 +33,7 @@ function Events(props) {
              alias unde non expedita molestiae excepturi.
              </p>
         </div>
-        <div>
+        {/* <div>
           <div className='row'>
           <div className='col-sm'>
             <img id="images" src={require('../Assets/events.png')} alt="" />
@@ -65,7 +65,7 @@ function Events(props) {
             </div>
           </div>
           </div>
-          </div>
+          </div> */}
 
 
       
