@@ -1,12 +1,17 @@
 import React,{useState} from 'react'
-import "./eventcard.css"
+import "./eventcard.css";
 const EventCard = (props) => {
   const [isOverview,setIsOverview] = useState(true);
-  
+
+
+ 
+
     return (
     <div>
     <div className='card-img'>
-    <img src={require('../../Assets/events.png')} alt='eventimage'></img>
+    <img src={props.url} alt='eventimage'></img>
+    
+    
     </div>
         <div className='card-title'>
             <h2>{props.eventName}</h2>

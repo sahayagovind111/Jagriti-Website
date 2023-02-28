@@ -11,10 +11,7 @@ const firebase = useFirebase();
   
  function Fetchdata(){
   // const collectionData = firebase.fetchEventData("events").then(result => setEventData((prev)=>[...result]))
-  Promise.all([firebase.fetchCollectionData("events"),firebase.fetchEventImages()])
-  .then((value)=>console.log("sucess"))
-  .catch((error)=>console.log(error))
-  
+  const Data = firebase.fetchCollectionData("events");
   
 }
 useEffect(()=>{
@@ -28,7 +25,7 @@ useEffect(()=>{
       
     <Events/>
     {
-      firebase.EventData.map((edata)=><EventCard eventName={edata.eventName} overview={edata.overview} contact={edata.contact} status={edata.status}></EventCard>)
+      firebase.EventData.map((edata)=><EventCard eventName={edata.eventName} overview={edata.overview} contact={edata.contact} status={edata.status} url={edata.imageURL}></EventCard>)
     }
     </div>
   )
