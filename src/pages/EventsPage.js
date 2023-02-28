@@ -11,7 +11,10 @@ const firebase = useFirebase();
   
  function Fetchdata(){
   // const collectionData = firebase.fetchEventData("events").then(result => setEventData((prev)=>[...result]))
-  const Data = firebase.fetchCollectionData("events");
+  Promise.all([firebase.fetchCollectionData("events"),firebase.fetchEventImages()])
+  .then((value)=>console.log("sucess"))
+  .catch((error)=>console.log(error))
+  
   
 }
 useEffect(()=>{

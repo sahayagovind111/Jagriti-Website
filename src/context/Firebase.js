@@ -1,6 +1,7 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState,useEffect } from "react";
 import { initializeApp } from "firebase/app";
 import { getFirestore, getDocs, collection, addDoc } from "firebase/firestore";
+import {ref,getDownloadURL,listAll,getStorage,getMetadata} from "firebase/storage";
 
 
 // Import Required Firebase Utility
@@ -16,6 +17,8 @@ const firebaseConfig = {
 
 const firebaseApp = initializeApp(firebaseConfig);
 const db = getFirestore(firebaseApp);
+// craeted storage reference
+const storage = getStorage(firebaseApp);
 // Create an instance of the imported firebase utility
 
 
@@ -29,7 +32,7 @@ export const FirebaseProvider = (props) => {
 
   const [EventData, setEventData] = useState([]);
   // Create the required function for using the internal functions of the utility imported
-
+  const [imageUrl,setImageUrl]= useState([]);
   async function fetchCollectionData(collectionName) {
     try {
       const collectionData = await getDocs(collection(db, collectionName));
@@ -42,7 +45,7 @@ export const FirebaseProvider = (props) => {
           })
         );
   
-        console.log(EventData);
+        // console.log(EventData);
       }
      
      
@@ -62,6 +65,31 @@ export const FirebaseProvider = (props) => {
       console.error("Error adding document: ", e);
     }
   };
+  // Function for fetching the images
+  function fetchEventImages() {
+    setImageUrl([]);  
+    const ImagesListRef = ref(storage,"events/");
+       listAll(ImagesListRef).then((response)=>{
+        response.items.forEach((item)=>{
+          getDownloadURL(item).then((url)=>{
+              setImageUrl((prev)=>[...prev,url])
+              
+          });
+        })
+        response.prefixes.forEach((name)=>{
+          
+        })
+        
+
+      }).catch((error)=>{
+          console.log(error);
+      })
+    
+
+
+      console.log(imageUrl);
+  }
+
 
   return (
     <FirebaseContext.Provider
@@ -70,6 +98,10 @@ export const FirebaseProvider = (props) => {
         fetchCollectionData,
         addDocument,
         EventData,
+        fetchEventImages,
+        imageUrl
+        
+        
       }}
     >
       {props.children}
