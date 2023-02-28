@@ -1,0 +1,53 @@
+.card-main{
+    display: flex;
+    flex-direction: row;
+    margin: 50px auto 15px auto;
+    gap: 2rem;
+    text-align: left;
+    height: 424px;
+    width: 900px;
+}
+
+.card-img,img{
+    max-height: 402px;
+    max-width: 300px;
+}
+
+.card-content-main{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+   
+}
+.card-overview-contact{
+    min-width: auto;
+    min-height: auto;
+    margin-bottom: auto;
+}
+
+.card-overview-contact-title{
+    display: flex;
+    gap: 7rem;
+    cursor: pointer;
+    margin-bottom: 2rem;
+    
+}
+.card-overview-contact-title >*{
+    font-size: larger;
+}
+.card-contact-content{
+    display: flex;
+    gap: 5rem;
+}
+.card-registration{
+    margin-bottom: 30px;
+    
+}
+.card-regis-result{
+   width: 200px;
+   text-align: center;
+   border-radius: 20px;
+   color: aliceblue;
+   background-color: orange;
+    
+}
